@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import Prescription from "../../src/components//Prescription";
 import RedirectWhenCartEmpty from "../../src/components/checkout/RedirectWhenCartEmpty";
 import Item from "../../src/components/checkout/item-checkout";
-import Parcel from "../../src/components//parcel";
+import Parcel from "../../src/components/checkout/parcel";
 import CustomContainer from "../../src/components/container";
 import MainLayout from "../../src/components/layout/MainLayout";
 import AuthGuard from "../../src/components/route-guard/AuthGuard";
