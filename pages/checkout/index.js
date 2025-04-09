@@ -3,10 +3,10 @@ import { getCartListModuleWise } from "helper-functions/getCartListModuleWise";
 import { useRouter } from "next/router";
 import React from "react";
 import { useSelector } from "react-redux";
-import PrescriptionCheckout from "../../src/components/checkout/Prescription";
-import RedirectWhenCartEmpty from "../../src/components/checkout/RedirectWhenCartEmpty";
-import ItemCheckout from "../../src/components/checkout/item-checkout";
-import ParcelCheckout from "../../src/components/checkout/parcel";
+import Prescription from "../../src/components//Prescription";
+import RedirectWhenCartEmpty from "../../src/components//RedirectWhenCartEmpty";
+import Item from "../../src/components//item-";
+import Parcel from "../../src/components//parcel";
 import CustomContainer from "../../src/components/container";
 import MainLayout from "../../src/components/layout/MainLayout";
 import AuthGuard from "../../src/components/route-guard/AuthGuard";
@@ -14,7 +14,7 @@ import SEO from "../../src/components/seo";
 import { getServerSideProps } from "../index";
 import { getImageUrl } from "utils/CustomFunctions";
 
-const CheckOutPage = ({ configData, landingPageData }) => {
+const Page = ({ configData, landingPageData }) => {
   const router = useRouter();
   const { page, store_id, id } = router.query;
   const {
@@ -30,7 +30,7 @@ const CheckOutPage = ({ configData, landingPageData }) => {
       <CssBaseline />
       <SEO
         configData={configData}
-        title={configData ? `Checkout` : "Loading..."}
+        title={configData ? `` : "Loading..."}
         image={`${getImageUrl(
           { value: configData?.logo_storage },
           "business_logo_url",
@@ -41,16 +41,16 @@ const CheckOutPage = ({ configData, landingPageData }) => {
 
       <MainLayout configData={configData} landingPageData={landingPageData}>
         <CustomContainer>
-          <AuthGuard from="checkout">
-            {page === "parcel" && <ParcelCheckout configData={configData} />}
+          <AuthGuard from="">
+            {page === "parcel" && <Parcel configData={configData} />}
             {page === "prescription" && (
-              <PrescriptionCheckout
+              <Prescription
                 storeId={store_id}
                 configData={configData}
               />
             )}
             {page === "campaign" && campaignItemList.length > 0 && (
-              <ItemCheckout
+              <Item
                 router={router}
                 configData={configData}
                 page={page}
@@ -60,7 +60,7 @@ const CheckOutPage = ({ configData, landingPageData }) => {
               />
             )}
             {page === "cart" && (
-              <ItemCheckout
+              <Item
                 router={router}
                 configData={configData}
                 page={page}
@@ -70,7 +70,7 @@ const CheckOutPage = ({ configData, landingPageData }) => {
               />
             )}
             {page === "buy_now" && buyNowItemList.length > 0 && (
-              <ItemCheckout
+              <Item
                 router={router}
                 configData={configData}
                 page={page}
@@ -92,5 +92,5 @@ const CheckOutPage = ({ configData, landingPageData }) => {
   );
 };
 
-export default CheckOutPage;
+export default Page;
 export { getServerSideProps };
